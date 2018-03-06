@@ -1,0 +1,20 @@
+<div class="container" xmlns:color="http://www.w3.org/1999/xhtml">
+  <form #loginForm="ngForm"  (submit)="formSubmit()">
+    <div class="form-group">
+      Email Id:  <input #email="ngModel" name="email" [(ngModel)]="user.email" type="email"
+             required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" class="form-control" placeholder="please enter valid email id"/><br/>
+      <div style="color: red">
+        <p *ngIf="email.invalid">please enter valid email id</p>
+      </div>
+    </div>
+    <div class="form-group">
+      Password:<br>
+      <input #password="ngModel" name="password" [(ngModel)]="user.password" type="password"
+             class="form-control" [minlength]="6" required placeholder="enter password"/>
+      <div style="color: Red">
+        <p *ngIf="password.invalid">enter minimum six character</p>
+      </div>
+    </div>
+    <button [disabled]="loginForm.invalid" type="submit" class="btn btn-default">LOGIN</button>
+  </form>
+</div>
